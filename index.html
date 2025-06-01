@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Monthly Budget Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header id="balanceHeader">
+        <h2 id="finalBalance">Final Monthly Balance: ₹0</h2>
+    </header>
+
+    <div class="main-container">
+        <!-- First Half: Input Fields -->
+        <div class="input-section">
+            <h1>Monthly Budget Tracker</h1>
+            <div class="inputs">
+                <label for="initialAccountBalance">Initial Account Balance (₹):</label>
+                <input type="number" id="initialAccountBalance" value="0" oninput="calculateBalance()" step="1">
+
+                <label for="primaryIncome">Primary Income (₹):</label>
+                <input type="number" id="primaryIncome" value="0" oninput="validatePositiveInput(this); calculateBalance()" min="0" step="1">
+
+                <label for="secondaryIncome">Secondary Income (₹):</label>
+                <input type="number" id="secondaryIncome" value="0" oninput="validatePositiveInput(this); calculateBalance()" min="0" step="1">
+            </div>
+
+            <div class="add-expense">
+                <h1>Add Expense</h1>
+                <label for="expenseDescription">Expense Description</label>
+                <input type="text" id="expenseDescription" placeholder="Title">
+
+                <label for="expenseValue">Expense Value (₹)</label>
+                <input type="number" id="expenseValue" placeholder="₹" oninput="validatePositiveInput(this)" min="0" step="1">
+                <button onclick="addExpense()">Add Expense</button>
+            </div>
+        </div>
+
+        <!-- Second Half: Expenses List -->
+        <div class="expenses-section">
+            <h1>Monthly Expenses</h1>
+            <ul id="expensesList"></ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
